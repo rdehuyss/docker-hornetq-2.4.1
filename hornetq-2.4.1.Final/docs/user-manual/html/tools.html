@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory">Chapter 49. Tools</title><link rel="stylesheet" href="css/jbossorg.css" type="text/css"/><meta xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" name="generator" content="DocBook XSL Stylesheets V1.74.0"/><meta xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" http-equiv="Content-Type" content="text/html; charset=UTF-8"/><link rel="home" href="index.html" title="HornetQ User Manual"/><link rel="up" href="index.html" title="HornetQ User Manual"/><link rel="prev" href="interoperability.html" title="Chapter 48. Interoperability"/><link rel="next" href="perf-tuning.html" title="Chapter 50. Performance Tuning"/></head><body><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="interoperability.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="perf-tuning.html"><strong>Next</strong></a></li></ul><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a id="tools"/>Chapter 49. Tools</h2></div></div></div><p>HornetQ ships with several helpful command line tools. All tools are available from the hornetq-tools-&lt;version&gt;-jar-with-dependencies.jar.
+      As the name suggests, this Java archive contains HornetQ along with all of its dependencies.  This is done to
+      simplify the execution of the tools by eliminating the need so specify a classpath. These tools are:</p><div class="itemizedlist"><ul><li><p><span class="bold"><strong><code class="literal">print-data</code></strong></span>. Used for low-level inspection of the bindings and message journals.  It
+            takes two parameters - <code class="literal">bindings-directory</code> and <code class="literal">journal-directory</code>. These
+            are the paths to the directories where the bindings and message journals are stored, respectively. For
+            example:
+         </p><pre xmlns="" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="">java -jar hornetq-tools-&lt;version&gt;-jar-with-dependencies.jar print-data /home/user/hornetq/data/bindings /home/user/hornetq/data/journal</pre></li><li><p><span class="bold"><strong><code class="literal">print-pages</code></strong></span>. Used for low-level inspection of paged message data.  It takes two
+            parameters - <code class="literal">paging-directory</code> and <code class="literal">journal-directory</code>. These are the
+            paths to the directories where paged messages and the message journals are stored, respectively. For
+            example:
+         </p><pre xmlns="" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="">java -jar hornetq-tools-&lt;version&gt;-jar-with-dependencies.jar print-pages /home/user/hornetq/data/paging-directory /home/user/hornetq/data/journal</pre></li><li><p><span class="bold"><strong><code class="literal">export</code></strong></span>. Used for exporting all binding and message data (including paged and large
+            messages) as well as JMS destinations and connection factories (including JNDI bindings). The export is
+            structured as XML.  This data can then be imported to another server even if the server is a different
+            version than the original.  It takes 4 parameters:
+         </p><div class="itemizedlist"><ul><li><p><code class="literal">bindings-directory</code> - the path to the bindings directory.</p></li><li><p><code class="literal">journal-directory</code> - the path to the journal directory.</p></li><li><p><code class="literal">paging-directory</code> - the path to the paging directory.</p></li><li><p><code class="literal">large-messages-directory</code> - the path to the large-messages directory.</p></li></ul></div><p>Here's an example:</p><pre xmlns="" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="">java -jar hornetq-tools-&lt;version&gt;-jar-with-dependencies.jar export /home/user/hornetq/data/bindings-directory /home/user/hornetq/data/journal-directory /home/user/hornetq/data/paging-directory /home/user/hornetq/data/large-messages</pre><p>This tool will export directly to standard out so if the data needs to be stored in a file please
+            redirect as appropriate for the operation system in use. Also, please note that the <code class="literal">export</code>
+            tool is single threaded so depending on the size of the journal it could take awhile to complete.
+         </p></li><li><p><span class="bold"><strong><code class="literal">import</code></strong></span>. Used for importing data from an XML document generated by the
+            <code class="literal">export</code> tool. The <code class="literal">import</code> tool reads the XML document and connects
+            to a HornetQ server via Netty to import all the data. It takes 5 parameters:
+         </p><div class="itemizedlist"><ul><li><p><code class="literal">input-file</code> - the path to the XML file generated by the <code class="literal">export</code>
+                  tool.
+               </p></li><li><p><code class="literal">host</code> - the IP address or hostname of the server where the data should be
+                  imported.
+               </p></li><li><p><code class="literal">port</code> - the port where HornetQ is listening.</p></li><li><p><code class="literal">transactional</code> - a <code class="literal">boolean</code> flag to indicate whether or not to
+                  send all the <span class="emphasis"><em>message</em></span> data in a single transaction. Valid values are <code class="literal">true</code>
+                  or <code class="literal">false</code>.
+               </p></li><li><p><code class="literal">application-server-compatibility</code> - a <code class="literal">boolean</code> flag to indicate
+                  whether or not JNDI bindings need special treatment to account for the way JBoss AS7, Wildfly, and
+                  JBoss EAP 6 handle JNDI for remote clients. Each of these application servers require a special JNDI
+                  binding to allow access from remote clients. If this is <code class="literal">true</code> then every JNDI
+                  binding in the XML will be duplicated in the "java:jboss/exported/" namespace thus allowing both local
+                  and remote clients to use the same name when accessing resources via JNDI. Valid values are
+                  <code class="literal">true</code> or <code class="literal">false</code>.
+               </p></li></ul></div><p>Here's an example:</p><pre xmlns="" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="">java -jar hornetq-tools-&lt;version&gt;-jar-with-dependencies.jar import /home/user/exportData.xml 127.0.0.1 5445 false false</pre><p>Like the <code class="literal">export</code> tool the <code class="literal">import</code> tool is single threaded so
+            depending on the size of the XML file it may take awhile for the process to complete.
+         </p></li></ul></div></div><ul class="docnav"><li class="previous"><a accesskey="p" href="interoperability.html"><strong>Prev</strong>Chapter 48. Interoperability</a></li><li class="up"><a accesskey="u" href="#"><strong>Top of page</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Front page</strong></a></li><li class="next"><a accesskey="n" href="perf-tuning.html"><strong>Next</strong>Chapter 50. Performance Tuning</a></li></ul></body></html>

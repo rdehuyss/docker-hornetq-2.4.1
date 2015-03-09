@@ -1,0 +1,34 @@
+20:16:27,644 INFO  [org.hornetq.integration.bootstrap] HQ101000: Starting HornetQ Server
+20:16:29,982 WARN  [org.hornetq.core.server] HQ222018: AIO was not located on this platform, it will fall back to using pure Java NIO. If your platform is Linux, install LibAIO to enable the AIO journal
+20:16:30,368 INFO  [org.hornetq.core.server] HQ221000: live server is starting with configuration HornetQ Configuration (clustered=false,backup=false,sharedStore=true,journalDirectory=../data/journal,bindingsDirectory=../data/bindings,largeMessagesDirectory=../data/large-messages,pagingDirectory=../data/paging)
+20:16:30,375 INFO  [org.hornetq.core.server] HQ221006: Waiting to obtain live lock
+20:16:30,574 INFO  [org.hornetq.core.server] HQ221013: Using NIO Journal
+20:16:30,820 WARN  [org.hornetq.core.server] HQ222007: Security risk! HornetQ is running with the default cluster admin user and default password. Please see the HornetQ user guide, cluster chapter, for instructions on how to change this.
+20:16:30,842 INFO  [org.hornetq.core.server] HQ221043: Adding protocol support CORE
+20:16:30,846 INFO  [org.hornetq.core.server] HQ221043: Adding protocol support STOMP
+20:16:30,851 INFO  [org.hornetq.core.server] HQ221043: Adding protocol support AMQP
+20:16:31,110 INFO  [org.hornetq.core.server] HQ221034: Waiting to obtain live lock
+20:16:31,112 INFO  [org.hornetq.core.server] HQ221035: Live Server Obtained live lock
+20:16:36,284 INFO  [org.hornetq.core.server] HQ221003: trying to deploy queue jms.queue.DLQ
+20:16:36,307 INFO  [org.hornetq.core.server] HQ221003: trying to deploy queue jms.queue.ExpiryQueue
+20:16:36,313 INFO  [org.hornetq.core.server] HQ221003: trying to deploy queue jms.queue.comeetPublicatieQueue
+20:16:36,319 INFO  [org.hornetq.core.server] HQ221003: trying to deploy queue jms.queue.comeetStatusQueue
+20:16:36,324 INFO  [org.hornetq.core.server] HQ221003: trying to deploy queue jms.queue.vacRaakvlakQueue
+20:16:36,329 INFO  [org.hornetq.core.server] HQ221003: trying to deploy queue jms.queue.vacRaakvlakErrorQueue
+20:16:36,334 INFO  [org.hornetq.core.server] HQ221003: trying to deploy queue jms.queue.vacMailQueue
+20:16:36,338 INFO  [org.hornetq.core.server] HQ221003: trying to deploy queue jms.queue.vacTestQueue
+20:16:36,342 INFO  [org.hornetq.core.server] HQ221003: trying to deploy queue jms.queue.vacMailErrorQueue
+20:16:36,346 INFO  [org.hornetq.core.server] HQ221003: trying to deploy queue jms.queue.mlbIncomingQueue
+20:16:36,351 INFO  [org.hornetq.core.server] HQ221003: trying to deploy queue jms.queue.vacIncomingQueue
+20:16:36,357 INFO  [org.hornetq.core.server] HQ221003: trying to deploy queue jms.queue.vacMeldingQueue
+20:16:36,362 INFO  [org.hornetq.core.server] HQ221003: trying to deploy queue jms.queue.siebelIncomingQueue
+20:16:36,367 INFO  [org.hornetq.core.server] HQ221003: trying to deploy queue jms.queue.inschrijvingWerkzoekendeQueue
+20:16:36,373 INFO  [org.hornetq.core.server] HQ221003: trying to deploy queue jms.queue.bemiddelingIncomingQueue
+20:16:36,379 INFO  [org.hornetq.core.server] HQ221003: trying to deploy queue jms.queue.comeetFrIncomingQueue
+20:16:36,917 INFO  [org.hornetq.core.server] HQ221020: Started Netty Acceptor version 4.0.13.Final localhost:5455
+20:16:36,933 INFO  [org.hornetq.core.server] HQ221020: Started Netty Acceptor version 4.0.13.Final localhost:5445
+20:16:36,938 INFO  [org.hornetq.core.server] HQ221007: Server is now live
+20:16:36,940 INFO  [org.hornetq.core.server] HQ221001: HornetQ Server version 2.4.1.Final (Fast Hornet, 124) [97a2d4da-b768-11e4-8d5c-9fc9f72561a3] 
+23:21:35,921 INFO  [org.hornetq.integration.bootstrap] HQ101001: Stopping HornetQ Server
+23:21:39,293 WARN  [org.hornetq.core.server] HQ222113: On ManagementService stop, there are 2 unexpected registered MBeans: [core.acceptor.netty, core.acceptor.netty-throughput]
+23:21:39,997 INFO  [org.hornetq.core.server] HQ221002: HornetQ Server version 2.4.1.Final (Fast Hornet, 124) [97a2d4da-b768-11e4-8d5c-9fc9f72561a3] stopped
