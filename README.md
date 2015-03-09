@@ -15,6 +15,6 @@ docker run -d -p 49260:22 -p 1099:1099 rdehuyss/docker-hornetq-2.4.1
 
 Login by SSH
 ```
-ssh root@localhost -p 49160
+ssh root@localhost -p 49260
 password: admin
 ```
