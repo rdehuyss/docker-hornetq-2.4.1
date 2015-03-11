@@ -15,7 +15,7 @@ export HORNETQ_HOME
 
 case "$1" in
  start)
-   $HORNETQ_HOME/bin/run.sh
+   $HORNETQ_HOME/bin/run.sh &
    ;;
  stop)
    $HORNETQ_HOME/bin/stop.sh
@@ -24,7 +24,7 @@ case "$1" in
  restart)
    $HORNETQ_HOME/bin/stop.sh
    sleep 20
-   $HORNETQ_HOME/bin/run.sh
+   $HORNETQ_HOME/bin/run.sh &
    ;;
  *)
    echo "Usage: hornetq {start|stop|restart}" >&2

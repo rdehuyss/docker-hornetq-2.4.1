@@ -15,4 +15,5 @@ RUN echo 'export PATH=$HORNETQ_HOME/bin:$PATH' >> /etc/bash.bashrc
 # Expose ports
 EXPOSE 1099
 
-CMD service hornetq start;
+CMD service hornetq start; \
+	/usr/sbin/sshd -D
